@@ -51,7 +51,7 @@ export class DileApp extends LitElement {
           <nav slot="menu" class="drawernav">
             <p><a href="#" @click=${this.goToHome}>Home</a></p>
             <p><a href="#" @click=${this.goToLogin}>Login</a></p>
-            <p><a href="register">More information</a></p>
+            <p><a href="#" @click=${this.goToRegister}>Register</a></p>
             <p><a href="#">Contact us</a></p>
           </nav>
         </dile-menu-hamburger>
@@ -86,6 +86,9 @@ export class DileApp extends LitElement {
   }
   goToLogin(event) {
     this.goto(event, 'login');
+  }
+  goToRegister(event) {
+    this.goto(event, 'register');
   }
   goto(event, page) {
     event.preventDefault();

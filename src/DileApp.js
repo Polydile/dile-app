@@ -72,8 +72,11 @@ export class DileApp extends LitElement {
 
   handleNavigation(path) {
     path = decodeURIComponent(path);
-    console.log(path);
-    this.page = path.substring(1);
+    if(path === '/') {
+      this.page = 'home';
+    } else {
+      this.page = path.substring(1);
+    }
   }
 
   navigate(page) {
@@ -82,7 +85,7 @@ export class DileApp extends LitElement {
   }
 
   goToHome(event) {
-    this.goto(event, 'home');
+    this.goto(event, '');
   }
   goToLogin(event) {
     this.goto(event, 'login');

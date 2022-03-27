@@ -1,11 +1,13 @@
 import { LitElement, html, css } from 'lit';
+import { installRouter } from 'pwa-helpers/router.js';
+
 import { dileAppTheme } from './styles/theme';
 const logo = new URL('../assets/open-wc-logo.svg', import.meta.url).href;
 
 export class DileApp extends LitElement {
   static get properties() {
     return {
-      title: { type: String },
+      page: { type: String },
     };
   }
 
@@ -37,7 +39,9 @@ export class DileApp extends LitElement {
 
   constructor() {
     super();
-    this.title = 'My app';
+    this.page = 'home';
+    installRouter((location) => this.handleNavigation(location.pathname));
+    this.addEventListener('navigate', (e) => this.navigate(e.detail));
   }
 
   render() {
@@ -45,9 +49,9 @@ export class DileApp extends LitElement {
       <dile-nav menu="right">
         <dile-menu-hamburger hamburgerAlwaysVisible slot="menu">
           <nav slot="menu" class="drawernav">
-            <p><a href="#">Link 1</a></p>
-            <p><a href="#">Another link</a></p>
-            <p><a href="#">More information</a></p>
+            <p><a href="#" @click=${this.goToHome}>Home</a></p>
+            <p><a href="#" @click=${this.goToLogin}>Login</a></p>
+            <p><a href="register">More information</a></p>
             <p><a href="#">Contact us</a></p>
           </nav>
         </dile-menu-hamburger>
@@ -57,8 +61,39 @@ export class DileApp extends LitElement {
         </h1>
       </dile-nav>
       <main>
-        <div class="logo"></div>
+        <dile-pages selected="${this.page}" attrForSelected="name">
+          <div name="home">Home</div>
+          <div name="login">Sección de login</div>
+          <div name="register">Sección de register</div>
+        </dile-pages>
       </main>
     `;
+  }
+
+  handleNavigation(path) {
+    path = decodeURIComponent(path);
+    console.log(path);
+    this.page = path.substring(1);
+  }
+
+  navigate(page) {
+    window.history.pushState({}, '', '/' + page);
+    this.handleNavigation(window.location.pathname);
+  }
+
+  goToHome(event) {
+    this.goto(event, 'home');
+  }
+  goToLogin(event) {
+    this.goto(event, 'login');
+  }
+  goto(event, page) {
+    event.preventDefault();
+    this.navigate(page);
+    this.closeDrawer();
+  }
+
+  closeDrawer() {
+    this.shadowRoot.querySelector('dile-menu-hamburger').close();
   }
 }

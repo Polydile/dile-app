@@ -11,6 +11,9 @@
     "start": "web-dev-server"
   },
   "dependencies": {
+    "@dile/dile-app-drawer": "^2.2.0",
+    "@dile/dile-menu-hamburger": "^1.1.0",
+    "@dile/dile-nav": "^0.1.0",
     "lit": "^2.0.2"
   },
   "devDependencies": {

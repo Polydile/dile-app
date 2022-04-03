@@ -16,5 +16,7 @@ export const dileAppTheme = css`
     --dile-nav-color: var(--primary-text-color);
 
     --dile-app-drawer-background-color: var(--primary-dark-color);
+
+    --dile-selector-icon-color: #303030;
   } 
 `;

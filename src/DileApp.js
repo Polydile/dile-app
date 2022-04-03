@@ -48,12 +48,18 @@ export class DileApp extends LitElement {
     return html`
       <dile-nav menu="right">
         <dile-menu-hamburger hamburgerAlwaysVisible slot="menu">
-          <nav slot="menu" class="drawernav">
-            <p><a href="#" @click=${this.goToHome}>Home</a></p>
-            <p><a href="#" @click=${this.goToLogin}>Login</a></p>
-            <p><a href="#" @click=${this.goToRegister}>Register</a></p>
-            <p><a href="#">Contact us</a></p>
-          </nav>
+          <dile-selector 
+            slot="menu" 
+            class="drawernav"
+            selected=${this.page}
+            attrForSelected="name"
+            @dile-selected-changed=${this.navitateSelected}
+          > 
+            <dile-selector-item icon="navigate_next" name="home">Home</dile-selector-item>
+            <dile-selector-item icon="navigate_next" name="login">Login</dile-selector-item>
+            <dile-selector-item icon="navigate_next" name="register">Register</dile-selector-item>
+            <dile-selector-item icon="navigate_next" name="contact">Contact us</dile-selector-item>
+          </dile-selector>
         </dile-menu-hamburger>
         <h1 slot="title">
           <img alt="open-wc logo" src=${logo} /> 
@@ -84,22 +90,16 @@ export class DileApp extends LitElement {
     this.handleNavigation(window.location.pathname);
   }
 
-  goToHome(event) {
-    this.goto(event, '');
-  }
-  goToLogin(event) {
-    this.goto(event, 'login');
-  }
-  goToRegister(event) {
-    this.goto(event, 'register');
-  }
-  goto(event, page) {
-    event.preventDefault();
+  goto(page) {
     this.navigate(page);
     this.closeDrawer();
   }
 
   closeDrawer() {
     this.shadowRoot.querySelector('dile-menu-hamburger').close();
+  }
+
+  navitateSelected(e) {
+    this.goto(e.detail.selected);
   }
 }

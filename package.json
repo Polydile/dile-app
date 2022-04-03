@@ -15,6 +15,7 @@
     "@dile/dile-menu-hamburger": "^1.1.0",
     "@dile/dile-nav": "^0.1.0",
     "@dile/dile-pages": "^1.1.0",
+    "@dile/dile-selector": "^0.1.2",
     "lit": "^2.0.2",
     "pwa-helpers": "^0.9.1"
   },

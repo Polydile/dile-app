@@ -7,7 +7,7 @@ const logo = new URL('../assets/open-wc-logo.svg', import.meta.url).href;
 export class DileApp extends LitElement {
   static get properties() {
     return {
-      page: { type: String },
+      section: { type: String },
     };
   }
 
@@ -67,21 +67,33 @@ export class DileApp extends LitElement {
         </h1>
       </dile-nav>
       <main>
-        <dile-pages selected="${this.page}" attrForSelected="name">
-          <div name="home">Home</div>
-          <div name="login">Sección de login</div>
-          <div name="register">Sección de register</div>
-        </dile-pages>
+        ${this.displaySection(this.section)}
       </main>
     `;
   }
 
+  displaySection(section) {
+    switch(section) {
+      case 'home':
+        return html`<dile-page-home></dile-page-home>`;
+      case 'login':
+        return html`<dile-page-login></dile-page-login>`;
+      case 'register':
+        return html`<dile-page-register></dile-page-register>`;
+      case 'contact':
+        return html`<dile-page-contact></dile-page-contact>`;
+      default:
+        return html`<dile-page-home></dile-page-home>`;
+    }
+  }
+
   handleNavigation(path) {
     path = decodeURIComponent(path);
-    if(path === '/') {
-      this.page = 'home';
+    let parts = this.splitPath(path);
+    if(parts.length == 0) {
+      this.section = 'home';
     } else {
-      this.page = path.substring(1);
+      this.section = parts[0];
     }
   }
 
@@ -101,5 +113,10 @@ export class DileApp extends LitElement {
 
   navitateSelected(e) {
     this.goto(e.detail.selected);
+  }
+
+  splitPath(path) {
+    let parts = path.split('/');
+    return parts.filter(part => part !== '');
   }
 }

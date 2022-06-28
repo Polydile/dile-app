@@ -12,3 +12,18 @@ import './components/sections/dile-page-login.js';
 import './components/sections/dile-page-register.js';
 
 customElements.define('dile-app', DileApp);
+
+axios.defaults.withCredentials = true;
+axios.defaults.baseURL = 'http://localhost';
+axios.defaults.headers = {
+    'X-Requested-With': 'XMLHttpRequest',
+    'Accept': 'application/json'
+};
+
+// const axios = Axios.create({
+//     baseURL: process.env.NEXT_PUBLIC_BACKEND_URL,
+//     headers: {
+//         'X-Requested-With': 'XMLHttpRequest',
+//     },
+//     withCredentials: true,
+// })

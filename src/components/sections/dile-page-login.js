@@ -28,7 +28,7 @@ export class DilePageLogin extends LitElement {
 
         axios.get('/sanctum/csrf-cookie').then(response => {
             axios
-            .post('/login', {})
+            .post('/login', {email: 'desarrolloweb@example.com', password: '123456'})
             .then(() => mutate())
             .catch(error => {
                 if (error.response.status !== 422) throw error

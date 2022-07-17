@@ -10,8 +10,6 @@ import '@dile/dile-selector/dile-selector-item';
 
 import { DileApp } from './DileApp.js';
 import './components/sections/dile-page-home.js';
-import './components/sections/dile-page-login.js';
-import './components/sections/dile-page-register.js';
 
 customElements.define('dile-app', DileApp);
 
@@ -21,11 +19,3 @@ axios.defaults.headers = {
     'X-Requested-With': 'XMLHttpRequest',
     'Accept': 'application/json'
 };
-
-// const axios = Axios.create({
-//     baseURL: process.env.NEXT_PUBLIC_BACKEND_URL,
-//     headers: {
-//         'X-Requested-With': 'XMLHttpRequest',
-//     },
-//     withCredentials: true,
-// })

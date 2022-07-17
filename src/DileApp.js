@@ -75,14 +75,19 @@ export class DileApp extends LitElement {
   displaySection(section) {
     switch(section) {
       case 'home':
+        import('./components/sections/dile-page-home.js');
         return html`<dile-page-home></dile-page-home>`;
       case 'login':
+        import('./components/sections/dile-page-login.js');
         return html`<dile-page-login></dile-page-login>`;
       case 'register':
+        import('./components/sections/dile-page-register.js');
         return html`<dile-page-register></dile-page-register>`;
       case 'contact':
+        import('./components/sections/dile-page-contact.js');
         return html`<dile-page-contact></dile-page-contact>`;
       default:
+        
         return html`<dile-page-home></dile-page-home>`;
     }
   }

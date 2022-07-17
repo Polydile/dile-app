@@ -10,7 +10,8 @@
   "scripts": {
     "build": "vite build && npm run analyze -- --exclude dist",
     "dev": "vite",
-    "analyze": "cem analyze --litelement"
+    "analyze": "cem analyze --litelement",
+    "preview": "vite preview"
   },
   "dependencies": {
     "@dile/dile-app-drawer": "^2.2.0",

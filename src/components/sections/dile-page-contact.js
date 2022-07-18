@@ -1,4 +1,5 @@
 import { LitElement, html, css } from 'lit';
+import '@dile/dile-spinner/dile-spinner';
 
 export class DilePageContact extends LitElement {
   static styles = [
@@ -12,6 +13,7 @@ export class DilePageContact extends LitElement {
   render() {
     return html`
     <p>Soy la página de contacto</p>
+    <dile-spinner active></dile-spinner>
     `;
   }
 }

@@ -6,7 +6,7 @@ export const FeedbackMixin = (Superclass) => class extends Superclass {
       detail: { msg } 
     }));
   }
-  negativeFeedback(e) {
+  negativeFeedback(msg) {
     this.dispatchEvent(new CustomEvent('negative-feedback', { 
       bubbles: true,
       composed: true,

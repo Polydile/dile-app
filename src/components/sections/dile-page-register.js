@@ -1,9 +1,7 @@
 import { LitElement, html, css } from 'lit';
-import { axios, csrf } from '../../lib/axios.js';
-import { FeedbackMixin } from '../../lib/feedback-mixin.js';
 import { AuthMixin } from '../../lib/auth-mixin.js';
 
-export class DilePageRegister extends AuthMixin(FeedbackMixin(LitElement)) {
+export class DilePageRegister extends AuthMixin(LitElement) {
     static styles = [
         css`
             :host {
@@ -35,7 +33,7 @@ export class DilePageRegister extends AuthMixin(FeedbackMixin(LitElement)) {
 
     get registerFormTemplate() {
         return html`
-            <form id="registerForm" @submit=${this.register}>
+            <form id="registerForm" @submit=${this.registerHandler}>
             <p>
                 <label for="email">Name</label>
                 <br>
@@ -63,21 +61,11 @@ export class DilePageRegister extends AuthMixin(FeedbackMixin(LitElement)) {
         `;
     }
 
-    async register(e) {
+    registerHandler(e) {
         e.preventDefault();
-        console.log('register');
-        await csrf();
         const formData = new FormData(this.registerForm);
-        axios
-            .post('/register', formData)
-            .then(() => {
-                this.positiveFeedback('registrado!!');
-                this.dispachCheckAuth();
-            })
-            .catch(error => {
-                if (error.response.status !== 422) throw error
-                this.negativeFeedback('error en el registro');
-            })
+        console.log(formData);
+        this.userRegister(formData);
     }
 }
 customElements.define('dile-page-register', DilePageRegister);

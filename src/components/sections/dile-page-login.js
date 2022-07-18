@@ -1,9 +1,7 @@
 import { LitElement, html, css } from 'lit';
-import { axios, csrf } from '../../lib/axios.js';
-import { FeedbackMixin } from '../../lib/feedback-mixin.js';
 import { AuthMixin } from '../../lib/auth-mixin.js';
 
-export class DilePageLogin extends AuthMixin(FeedbackMixin(LitElement)) {
+export class DilePageLogin extends AuthMixin(LitElement) {
     static styles = [
         css`
             :host {
@@ -35,7 +33,7 @@ export class DilePageLogin extends AuthMixin(FeedbackMixin(LitElement)) {
 
     get loginFormTemplate() {
         return html`
-            <form id="loginForm" @submit=${this.login}>
+            <form id="loginForm" @submit=${this.loginHandler}>
                 <p>
                     <label for="email">Email</label>
                     <br>
@@ -51,6 +49,13 @@ export class DilePageLogin extends AuthMixin(FeedbackMixin(LitElement)) {
                 </p>
             </form>
         `;
+    }
+
+    loginHandler(e) {
+        e.preventDefault();
+        const formData = new FormData(this.loginForm);
+        console.log(formData);
+        this.userLogin(formData);
     }
 
     async login(e) {

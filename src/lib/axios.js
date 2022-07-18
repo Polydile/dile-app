@@ -9,4 +9,4 @@ export const axios = Axios.create({
   withCredentials: true
 });
 
-export const csrf = () => axios.get('/sanctum/csrf-cookie');
+

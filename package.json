@@ -15,7 +15,10 @@
   },
   "dependencies": {
     "@dile/dile-app-drawer": "^2.2.0",
+    "@dile/dile-button": "^2.3.0",
+    "@dile/dile-form-mixin": "^0.0.10",
     "@dile/dile-icon": "^0.0.8",
+    "@dile/dile-input": "^1.9.3",
     "@dile/dile-menu-hamburger": "^2.0.2",
     "@dile/dile-menu-overlay": "^2.0.6",
     "@dile/dile-nav": "^0.1.3",
@@ -29,7 +32,7 @@
     "pwa-helpers": "^0.9.1"
   },
   "devDependencies": {
-    "@custom-elements-manifest/analyzer": "^0.4.17",
+    "@custom-elements-manifest/analyzer": "^0.0.1",
     "vite": "^3.0.0"
   },
   "customElements": "custom-elements.json"

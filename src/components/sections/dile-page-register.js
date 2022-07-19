@@ -1,7 +1,10 @@
 import { LitElement, html, css } from 'lit';
 import { AuthMixin } from '../../lib/auth-mixin.js';
+import '@dile/dile-input/dile-input';
+import '@dile/dile-button/dile-button';
+import { DileFormMixin } from '@dile/dile-form-mixin';
 
-export class DilePageRegister extends AuthMixin(LitElement) {
+export class DilePageRegister extends DileFormMixin(AuthMixin(LitElement)) {
     static styles = [
         css`
             :host {
@@ -33,29 +36,49 @@ export class DilePageRegister extends AuthMixin(LitElement) {
 
     get registerFormTemplate() {
         return html`
-            <form id="registerForm" @submit=${this.registerHandler}>
+            <form id="registerForm">
             <p>
-                <label for="email">Name</label>
-                <br>
-                <input type="text" name="name" id="name" placeholder="Name" value="Smith">
+                <dile-input
+                    label="Name"
+                    type="text" 
+                    name="name" 
+                    id="name" 
+                    placeholder="Name" 
+                    value="Smith"
+                ></dile-input>
             </p>
             <p>
-                <label for="email">Email</label>
-                <br>
-                <input type="email" name="email" id="email_register" placeholder="Email" value="x@example.com">
+                <dile-input
+                    label="Email"
+                    type="email" 
+                    name="email" 
+                    id="email_register" 
+                    placeholder="Email" 
+                    value="x@example.com"
+                ></dile-input>
             </p>
             <p>
-                <label for="password">Password</label>
-                <br>
-                <input type="password" name="password" id="password_register" placeholder="Password" value="1234qwer">
+                <dile-input
+                    label="Password"
+                    type="password" 
+                    name="password" 
+                    id="password_register" 
+                    placeholder="Password" 
+                    value="1234qwer"
+                ></dile-input>
             </p>
             <p>
-                <label for="password_confirmation">Repeat password</label>
-                <br>
-                <input type="password" name="password_confirmation" id="password_confirmation" placeholder="Repeat the password" value="1234qwer">
+                <dile-input
+                    label="Repeat password"
+                    type="password" 
+                    name="password_confirmation" 
+                    id="password_confirmation" 
+                    placeholder="Repeat the password" 
+                    value="1234qwer"
+                ></dile-input>
             </p>
             <p>
-                <input type="submit" value="Register">
+                <dile-button @click=${this.registerHandler}>Register</dile-button>
             </p>
             </form>
         `;
@@ -63,7 +86,8 @@ export class DilePageRegister extends AuthMixin(LitElement) {
 
     registerHandler(e) {
         e.preventDefault();
-        const formData = new FormData(this.registerForm);
+        this.clearErrors();
+        const formData = this.getData();
         console.log(formData);
         this.userRegister(formData);
     }

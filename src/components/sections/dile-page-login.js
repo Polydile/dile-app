@@ -1,7 +1,10 @@
 import { LitElement, html, css } from 'lit';
 import { AuthMixin } from '../../lib/auth-mixin.js';
+import '@dile/dile-input/dile-input';
+import '@dile/dile-button/dile-button';
+import {DileFormMixin} from '@dile/dile-form-mixin';
 
-export class DilePageLogin extends AuthMixin(LitElement) {
+export class DilePageLogin extends DileFormMixin(AuthMixin(LitElement)) {
     static styles = [
         css`
             :host {
@@ -33,19 +36,23 @@ export class DilePageLogin extends AuthMixin(LitElement) {
 
     get loginFormTemplate() {
         return html`
-            <form id="loginForm" @submit=${this.loginHandler}>
+            <form id="loginForm">
                 <p>
-                    <label for="email">Email</label>
-                    <br>
-                    <input type="email" name="email" id="email" placeholder="Email" value="x@example.com">
+                    <dile-input 
+                        label="Email" 
+                        type="email" 
+                        name="email" 
+                        id="email" 
+                        placeholder="Email" 
+                        value="x@example.com"
+                        hideErrorOnInput
+                    ></dile-input>
                 </p>
                 <p>
-                    <label for="password">Password</label>
-                    <br>
-                    <input type="password" name="password" id="password" placeholder="Password" value="1234qwer">
+                    <dile-input label="Clave" type="password" name="password" id="password" placeholder="Password" value="1234qwer"></dile-input>
                 </p>
                 <p>
-                    <input type="submit" id="loginButton" value="Login">
+                    <dile-button @click=${this.loginHandler}>Login</dile-button>
                 </p>
             </form>
         `;
@@ -53,27 +60,10 @@ export class DilePageLogin extends AuthMixin(LitElement) {
 
     loginHandler(e) {
         e.preventDefault();
-        const formData = new FormData(this.loginForm);
+        this.clearErrors();
+        const formData = this.getData();
         console.log(formData);
         this.userLogin(formData);
-    }
-
-    async login(e) {
-        console.log('login', axios.defaults);
-        e.preventDefault();
-      
-        await csrf();
-        const formData = new FormData(this.loginForm);
-        axios
-            .post('/login', { email: formData.get('email'), password: formData.get('password') })
-            .then(() => {
-                this.positiveFeedback('login success');
-                this.dispachCheckAuth();
-            })
-            .catch(error => {
-                if (error.response.status !== 422) throw error
-                this.negativeFeedback(error.response.data.message);
-            })
     }
 }
 customElements.define('dile-page-login', DilePageLogin);

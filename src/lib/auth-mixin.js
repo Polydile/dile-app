@@ -29,6 +29,7 @@ export const AuthMixin = (Superclass) => class extends FeedbackMixin(Superclass)
       .catch(error => {
         if (error.response.status !== 422) throw error
         this.negativeFeedback(error.response.data.message);
+        this.showErrors(error.response.data.errors);
       })
   }
 
@@ -44,6 +45,7 @@ export const AuthMixin = (Superclass) => class extends FeedbackMixin(Superclass)
         if (error.response.status !== 422) throw error
         console.log(error.response.data.message);
         this.negativeFeedback('Error: ' + error.response.data.message);
+        this.showErrors(error.response.data.errors);
       })
   }
 

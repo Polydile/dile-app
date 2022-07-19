@@ -25,11 +25,12 @@ export const dileAppTheme = css`
     --dile-button-border-width: 2px;
     --dile-button-background-color: var(--primary-darker-color);
     --dile-button-text-color: #fff;
-    --dile-button-hover-border-color: var(--primary-darker-color);
-    --dile-button-border-color: #fff;
+    --dile-button-border-color: #000;
     --dile-button-border-radius: 5px;
     --dile-button-text-transform: uppercase;
     --dile-button-font-weight: 300;
-    --dile-button-hover-background-color: var(--primary-light-color);
+    --dile-button-hover-border-color: var(--primary-darker-color);
+    --dile-button-hover-background-color: #303030;
+    --dile-button-hover-text-color: var(--primary-color);
   } 
 `;

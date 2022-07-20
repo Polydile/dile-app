@@ -28,7 +28,7 @@ export class DilePageRegister extends DileFormMixin(AuthMixin(LitElement)) {
         return html`
             <h1>Registro</h1>
             ${this.user
-                ? html`<p>Ya tienes un usuario</p>`
+                ? html`<p>You are already registered</p>`
                 : this.registerFormTemplate
             }
         `;

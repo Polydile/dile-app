@@ -13,11 +13,17 @@ export const dileAppTheme = css`
     --secondary-text-color: #ffffff;
 
     --dile-nav-padding-y: 0;
+    --dile-nav-padding-x: 0.5rem;
     --dile-nav-background-color: var(--primary-color);
     --dile-nav-color: var(--primary-text-color);
     --dile-nav-column-gap: 0.2rem;
 
     --dile-hamburger-color: var(--secondary-dark-color);
+    --dile-hamburger-active-color: var(--secondary-dark-color);
+    --dile-hamburger-line-size: 4px;
+    --dile-hamburger-line-separation: -8px;
+    --dile-hamburger-width: 28px;
+    --dile-hamburger-padding-x: 0.4rem;
 
     --dile-app-drawer-background-color: var(--secondary-light-color);
 

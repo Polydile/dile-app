@@ -2,9 +2,11 @@ import { LitElement, html, css } from 'lit';
 import '@dile/dile-menu-overlay/dile-menu-overlay';
 import '@dile/dile-icon/dile-icon';
 import { arrowDropDownIcon } from '@dile/icons';
+import { userMenuButtonStyles } from './user-menu-button-styles.js';
 
-export class DileUserControl extends LitElement {
+export class DileUserMenu extends LitElement {
   static styles = [
+    userMenuButtonStyles,
     css`
       :host {
         display: block;
@@ -15,9 +17,28 @@ export class DileUserControl extends LitElement {
         cursor: pointer;
         display: flex;
         align-items: center;
+        font-size: 0.85rem;
+        text-align: right;
       }
-      .content {
-        padding: 1rem;
+      .user-name b {
+        width: 80px;
+        max-width: 80px;
+        overflow: hidden;
+        text-overflow: ellipsis;
+        white-space: nowrap;
+      }
+
+      @media(min-width: 350px) {
+        .user-name b {
+          width: 100px;
+          max-width: 100px;
+        }
+      }
+      @media(min-width: 420px) {
+        .user-name b {
+          width: 150px;
+          max-width: 150px;
+        }
       }
     `
   ];
@@ -35,8 +56,9 @@ export class DileUserControl extends LitElement {
           <b>${this.user.name}</b>
           <dile-icon .icon="${arrowDropDownIcon}"></dile-icon>
         </span>
-        <div slot="content" class="content">
-          <a href="#" @click="${this.dispatchLogout}">logout</a>
+import { userMenuButtonStyles } from './user-menu-button-styles.js';
+        <div slot="content" class="loginbutton">
+          <a href="#" @click="${this.dispatchLogout}" class="loginoption">logout</a>
         </div>
       </dile-menu-overlay>
     `;
@@ -47,4 +69,4 @@ export class DileUserControl extends LitElement {
     this.dispatchEvent(new CustomEvent('logout'));
   }
 }
-customElements.define('dile-user-control', DileUserControl);
+customElements.define('dile-user-menu', DileUserMenu);

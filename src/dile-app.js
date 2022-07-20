@@ -48,7 +48,7 @@ export class DileApp extends LitElement {
       } 
       dile-nav img {
         height: 2rem;
-        margin-right: 0.5rem;
+        margin: 0 0.5rem 0 0.3rem;
       }
       .app-menu {
         margin-top: 3rem;
@@ -84,7 +84,7 @@ export class DileApp extends LitElement {
                 </div>
             </dile-menu-hamburger>
         <h1 slot="title">
-            <img alt="open-wc logo" src=${logo} />
+            <img alt="Polydile logo" src=${logo} />
             Dile App
         </h1>
     </dile-nav>

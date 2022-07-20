@@ -16,6 +16,7 @@
   "dependencies": {
     "@dile/dile-app-drawer": "^2.2.0",
     "@dile/dile-button": "^2.3.0",
+    "@dile/dile-card": "^0.0.2",
     "@dile/dile-checkbox": "^2.2.9",
     "@dile/dile-form-mixin": "^0.0.10",
     "@dile/dile-icon": "^0.0.8",

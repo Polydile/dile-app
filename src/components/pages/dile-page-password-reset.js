@@ -3,9 +3,12 @@ import { AuthMixin } from '../../lib/auth-mixin.js';
 import { DileFormMixin } from '@dile/dile-form-mixin';
 import '@dile/dile-input/dile-input';
 import '@dile/dile-button/dile-button';
+import { cardPageStyles } from '../../styles/card-page-styles.js';
+import '@dile/dile-card/dile-card';
 
 export class DilePagePasswordReset extends DileFormMixin(AuthMixin(LitElement)) {
   static styles = [
+    cardPageStyles,
     css`
       :host {
         display: block;
@@ -28,7 +31,7 @@ export class DilePagePasswordReset extends DileFormMixin(AuthMixin(LitElement)) 
   render() {
     return html`
       <h2>Reset password</h2>
-      <form>
+      <dile-card>
         <input type="hidden" name="token" id="resetPasswordToken"></p>
         <p>
           <dile-input label="Email" type="email" name="email" id="email_reset" placeholder="Email" value=""></dile-input>
@@ -43,7 +46,7 @@ export class DilePagePasswordReset extends DileFormMixin(AuthMixin(LitElement)) 
         <p>
           <dile-button @click=${this.doReset}>Reset password</dile-button>
         </p>
-        </form>
+        </dile-card>
 
     `;
   }

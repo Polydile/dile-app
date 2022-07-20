@@ -2,11 +2,11 @@ import { css } from 'lit';
 
 export const dileAppTheme = css`
   :host {
-    --primary-color: #3de0a7;
+    --primary-color: #49e7af;
     --primary-light-color: #c2f9e6;
     --primary-dark-color: #2bb585;
     --primary-darker-color: #0b8c79;
-    --secondary-color: #5d4037;
+    --secondary-color: #6a4a38;
     --secondary-light-color: #bba9a4;
     --secondary-dark-color: #412217;
     --primary-text-color: #303030;
@@ -32,9 +32,10 @@ export const dileAppTheme = css`
     --dile-selector-padding-y: 0.5rem;
     --dile-selector-icon-size: 1.75rem;
 
-    --dile-input-border-color: var(--primary-darker-color);
+    --dile-input-border-color: var(--secondary-dark-color);
     --dile-input-border-width: 2px;
-    --dile-button-border-width: 2px;
+
+    --dile-button-border-width: 0px;
     --dile-button-background-color: var(--primary-darker-color);
     --dile-button-text-color: #fff;
     --dile-button-border-color: transparent;

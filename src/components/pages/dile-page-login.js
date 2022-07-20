@@ -5,20 +5,24 @@ import '@dile/dile-input/dile-input';
 import '@dile/dile-button/dile-button';
 import '@dile/dile-checkbox/dile-checkbox';
 import '../user/dile-remember-password';
+import '@dile/dile-card/dile-card';
+import { cardPageStyles } from '../../styles/card-page-styles.js';
 
 export class DilePageLogin extends DileFormMixin(AuthMixin(LitElement)) {
     static styles = [
+        cardPageStyles,
         css`
-            :host {
-                display: block;
-                padding: 0 0.6rem;
-            }
+            
             .actions {
+                margin-top: 1rem;
                 display: flex;
                 justify-content: space-between;
             }
             .actions p {
                 margin: 0;
+            }
+            dile-checkbox {
+                margin: 0.4rem 0 0;
             }
         `
     ];
@@ -45,8 +49,7 @@ export class DilePageLogin extends DileFormMixin(AuthMixin(LitElement)) {
 
     get loginFormTemplate() {
         return html`
-            <form id="loginForm">
-                <p>
+            <dile-card shadow-none>
                     <dile-input 
                         label="Email" 
                         type="email" 
@@ -56,13 +59,11 @@ export class DilePageLogin extends DileFormMixin(AuthMixin(LitElement)) {
                         value="x@example.com"
                         hideErrorOnInput
                     ></dile-input>
-                </p>
-                <p>
+                
                     <dile-input label="Password" type="password" name="password" id="password" placeholder="Password" value="1234qwer"></dile-input>
-                </p>
-                <p>
+                
                     <dile-checkbox name="remember">Remember me</dile-checkbox>
-                </p>
+            
                 <div class="actions">
                     <p>
                         <dile-button @click=${this.loginHandler}>Login</dile-button>
@@ -71,7 +72,7 @@ export class DilePageLogin extends DileFormMixin(AuthMixin(LitElement)) {
                         <dile-remember-password></dile-remember-password>
                     </p>
                 </div>
-            </form>
+            </dile-card>
         `;
     }
 

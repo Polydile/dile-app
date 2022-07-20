@@ -9,6 +9,9 @@ export class DileRememberPassword extends AuthMixin(DileFormMixin(LitElement)) {
       :host {
         display: block;
       }
+      a {
+        color: var(--secondary-color);
+      }
     `
   ];
 

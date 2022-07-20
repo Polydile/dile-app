@@ -5,6 +5,7 @@ export class DilePageHome extends LitElement {
         css`
             :host {
                 display: block;
+                padding: 0.6rem;
             }
         `
     ];

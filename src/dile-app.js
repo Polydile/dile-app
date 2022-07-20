@@ -7,6 +7,7 @@ import '@dile/dile-nav/dile-nav';
 import '@dile/dile-pages/dile-pages';
 import '@dile/dile-selector/dile-selector';
 import '@dile/dile-selector/dile-selector-item';
+import '@dile/dile-spinner/dile-spinner-modal';
 
 // App imports
 import './components/sections/dile-page-home.js';
@@ -17,7 +18,7 @@ import './components/user/dile-resend-confirmation-email.js';
 import { installRouter } from 'pwa-helpers/router.js';
 
 import { dileAppTheme } from './styles/theme';
-const logo = new URL('../assets/open-wc-logo.svg', import.meta.url).href;
+const logo = new URL('./assets/logo-polydile.svg', import.meta.url).href;
 
 export class DileApp extends LitElement {
     static get properties() {
@@ -46,7 +47,7 @@ export class DileApp extends LitElement {
         font-size: 1.2rem;
       } 
       dile-nav img {
-        height: 1.5rem;
+        height: 2rem;
         margin-right: 0.5rem;
       }
 
@@ -63,13 +64,16 @@ export class DileApp extends LitElement {
     render() {
         return html`
         <dile-nav menu="right">
-            <dile-user slot="actions" @user-detected=${this.setUser} @logout-detected=${this.setLogout}></dile-user>
+            <dile-user 
+                slot="actions" 
+                @user-detected=${this.setUser} 
+                @logout-detected=${this.setLogout}
+                @not-logged-in=${this.setLogout}
+            ></dile-user>
             <dile-menu-hamburger hamburgerAlwaysVisible slot="menu">
                 <dile-selector slot="menu" class="drawernav" selected=${this.page} attrForSelected="name"
                     @dile-selected-changed=${this.navitateSelected}>
                     <dile-selector-item icon="navigate_next" name="home">Home</dile-selector-item>
-                    <dile-selector-item icon="navigate_next" name="login">Login</dile-selector-item>
-                    <dile-selector-item icon="navigate_next" name="register">Register</dile-selector-item>
                     <dile-selector-item icon="navigate_next" name="contact">Contact us</dile-selector-item>
                 </dile-selector>
             </dile-menu-hamburger>
@@ -79,7 +83,10 @@ export class DileApp extends LitElement {
         </h1>
     </dile-nav>
     <main @check-auth=${this.checkAuth}>
-        ${this.displaySection(this.section)}
+        ${this.user === undefined 
+            ? html`<dile-spinner-modal active></dile-spinner-modal>`
+            : this.displaySection(this.section)
+        }
     </main>
     
     <dile-feedback></dile-feedback>

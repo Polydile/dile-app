@@ -59,7 +59,7 @@ export const AuthMixin = (Superclass) => class extends FeedbackMixin(Superclass)
       })
       .catch((err) => {
         if (err.response.status === 401) {
-          this.user = null
+          this.dispatchNotLoggedIn();
         } else {
           throw err;
         }
@@ -84,6 +84,9 @@ export const AuthMixin = (Superclass) => class extends FeedbackMixin(Superclass)
     this.dispatchEvent(new CustomEvent('user-detected', {
       detail: { user: this.user }
     }));
+  }
+  dispatchNotLoggedIn() {
+    this.dispatchEvent(new CustomEvent('not-logged-in'));
   }
   dispatchLogoutDetected() {
     this.dispatchEvent(new CustomEvent('logout-detected'));

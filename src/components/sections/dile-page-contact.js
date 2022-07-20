@@ -6,14 +6,15 @@ export class DilePageContact extends LitElement {
     css`
       :host {
         display: block;
+        padding: 0.6rem;
       }
     `
   ];
 
   render() {
     return html`
-    <p>Soy la página de contacto</p>
-    <dile-spinner active></dile-spinner>
+    <h1>Contact</h1>
+    <p>We are the dile-components team. Contact us at contacto@escuela.it</p>
     `;
   }
 }

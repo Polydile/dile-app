@@ -23,12 +23,12 @@ export class DileResendConfirmationEmail extends AuthMixin(LitElement) {
     ${this.user && !this.user.email_verified_at
       ? html`
         <dile-message hideCloseIcon opened position="right-bottom">
-          <h2>You are logged-in</h2>
+          <h2>Confirm your email</h2>
           <p>
-            Before start using the app you need to verify your email account. We have sent an email to you. <b>Please check your email and click on the confirmation link</b>.
+            You are logged in! but, before start using this app, you need to verify your email account. We have sent an email to you. <b>Please check your email and click on the confirmation link</b>.
           </p>
           <p>
-            If you couldn't find the email click on <a href="#" @click="${this.resendConfirmation}">resend the confirmation email</a>.
+            If you couldn't find the email, click on <a href="#" @click="${this.resendConfirmation}">resend the confirmation email</a>.
           </p>
           
         </dile-message>

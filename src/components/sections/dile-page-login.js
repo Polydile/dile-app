@@ -37,7 +37,7 @@ export class DilePageLogin extends DileFormMixin(AuthMixin(LitElement)) {
         return html`
             <h1>Login</h1>
             ${this.user
-                ? html`<p>Ya has hecho login</p>`
+                ? html`<p>You are logged-in</p>`
                 : this.loginFormTemplate
             }
         `;
@@ -58,7 +58,7 @@ export class DilePageLogin extends DileFormMixin(AuthMixin(LitElement)) {
                     ></dile-input>
                 </p>
                 <p>
-                    <dile-input label="Clave" type="password" name="password" id="password" placeholder="Password" value="1234qwer"></dile-input>
+                    <dile-input label="Password" type="password" name="password" id="password" placeholder="Password" value="1234qwer"></dile-input>
                 </p>
                 <p>
                     <dile-checkbox name="remember">Remember me</dile-checkbox>

@@ -12,7 +12,7 @@ export class DilePageHome extends LitElement {
 
     render() {
         return html`
-            <p>Soy la página Home</p>
+            <p>Welcome to the app</p>
         `;
     }
 }

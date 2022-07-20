@@ -50,7 +50,11 @@ export class DileApp extends LitElement {
         height: 2rem;
         margin-right: 0.5rem;
       }
-
+      .app-menu {
+        margin-top: 3rem;
+        min-width: 250px;
+        font-size: 1.2rem;
+      }
     `];
     }
 
@@ -63,19 +67,21 @@ export class DileApp extends LitElement {
 
     render() {
         return html`
-        <dile-nav menu="right">
+        <dile-nav menu="left">
             <dile-user 
                 slot="actions" 
                 @user-detected=${this.setUser} 
                 @logout-detected=${this.setLogout}
                 @not-logged-in=${this.setLogout}
             ></dile-user>
-            <dile-menu-hamburger hamburgerAlwaysVisible slot="menu">
-                <dile-selector slot="menu" class="drawernav" selected=${this.page} attrForSelected="name"
-                    @dile-selected-changed=${this.navitateSelected}>
-                    <dile-selector-item icon="navigate_next" name="home">Home</dile-selector-item>
-                    <dile-selector-item icon="navigate_next" name="contact">Contact us</dile-selector-item>
-                </dile-selector>
+            <dile-menu-hamburger hamburgerAlwaysVisible slot="menu" direction="left">
+                <div slot="menu" class="app-menu">
+                    <dile-selector class="drawernav" selected=${this.page} attrForSelected="name"
+                        @dile-selected-changed=${this.navitateSelected}>
+                        <dile-selector-item icon="navigate_next" name="home">Home</dile-selector-item>
+                        <dile-selector-item icon="navigate_next" name="contact">Contact us</dile-selector-item>
+                    </dile-selector>
+                </div>
             </dile-menu-hamburger>
         <h1 slot="title">
             <img alt="open-wc logo" src=${logo} />

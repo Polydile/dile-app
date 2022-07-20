@@ -10,7 +10,7 @@ import '@dile/dile-selector/dile-selector-item';
 import '@dile/dile-spinner/dile-spinner-modal';
 
 // App imports
-import './components/sections/dile-page-home.js';
+import './components/pages/dile-page-home.js';
 import './components/dile-feedback.js';
 import './components/user/dile-user.js';
 import './components/user/dile-resend-confirmation-email.js';
@@ -103,19 +103,19 @@ export class DileApp extends LitElement {
     displaySection(section) {
         switch (section) {
             case 'home':
-                import('./components/sections/dile-page-home.js');
+                import('./components/pages/dile-page-home.js');
                 return html`<dile-page-home></dile-page-home>`;
             case 'login':
-                import('./components/sections/dile-page-login.js');
+                import('./components/pages/dile-page-login.js');
                 return html`<dile-page-login .user=${this.user}></dile-page-login>`;
             case 'register':
-                import('./components/sections/dile-page-register.js');
+                import('./components/pages/dile-page-register.js');
                 return html`<dile-page-register .user=${this.user}></dile-page-register>`;
             case 'contact':
-                import('./components/sections/dile-page-contact.js');
+                import('./components/pages/dile-page-contact.js');
                 return html`<dile-page-contact></dile-page-contact>`;
             case 'reset-password':
-                import('./components/sections/dile-page-password-reset.js');
+                import('./components/pages/dile-page-password-reset.js');
                 return html`<dile-page-password-reset></dile-page-password-reset>`;
             default:
                 return html`<dile-page-home></dile-page-home>`;

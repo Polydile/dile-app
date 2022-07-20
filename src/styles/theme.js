@@ -32,5 +32,8 @@ export const dileAppTheme = css`
     --dile-button-hover-border-color: var(--primary-darker-color);
     --dile-button-hover-background-color: #303030;
     --dile-button-hover-text-color: var(--primary-color);
+
+    --dile-modal-close-icon-top: 0.75rem;
+    --dile-modal-close-icon-color: var(--primary-dark-color);
   } 
 `;

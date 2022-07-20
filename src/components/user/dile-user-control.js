@@ -12,6 +12,7 @@ export class DileUserControl extends LitElement {
         --dile-icon-color: #000;
       }
       .user-name {
+        cursor: pointer;
         display: flex;
         align-items: center;
       }

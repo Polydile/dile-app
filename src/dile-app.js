@@ -12,6 +12,7 @@ import '@dile/dile-selector/dile-selector-item';
 import './components/sections/dile-page-home.js';
 import './components/dile-feedback.js';
 import './components/user/dile-user.js';
+import './components/user/dile-resend-confirmation-email.js';
 
 import { installRouter } from 'pwa-helpers/router.js';
 
@@ -82,6 +83,7 @@ export class DileApp extends LitElement {
     </main>
     
     <dile-feedback></dile-feedback>
+    <dile-resend-confirmation-email .user="${this.user}"></dile-resend-confirmation-email>
     `;
     }
 
@@ -99,6 +101,9 @@ export class DileApp extends LitElement {
             case 'contact':
                 import('./components/sections/dile-page-contact.js');
                 return html`<dile-page-contact></dile-page-contact>`;
+            case 'reset-password':
+                import('./components/sections/dile-page-password-reset.js');
+                return html`<dile-page-password-reset></dile-page-password-reset>`;
             default:
                 return html`<dile-page-home></dile-page-home>`;
         }

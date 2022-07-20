@@ -88,4 +88,44 @@ export const AuthMixin = (Superclass) => class extends FeedbackMixin(Superclass)
   dispatchLogoutDetected() {
     this.dispatchEvent(new CustomEvent('logout-detected'));
   }
+
+  async resendConfirmation() {
+    axios
+      .post('/email/verification-notification')
+      .then(() => {
+        this.positiveFeedback('Email sent!');
+      })
+      .catch(error => {
+        this.negativeFeedback('error on email resend');
+      })
+  }
+
+  async sendForgotPassword(email) {
+    await csrf();
+    axios
+      .post('/forgot-password', { email })
+      .then(response => {
+        this.closeModal();
+        this.positiveFeedback(response.data.message);
+      })
+      .catch(error => {
+        if (error.response.status !== 422) throw error
+        this.negativeFeedback(error.response.data.message);
+        this.showErrors(error.response.data.errors);
+      })
+  }
+
+  async resetPassword(data) {
+    await csrf();
+    axios
+      .post('/reset-password', data)
+      .then(() => {
+        this.positiveFeedback('Password reset OK!');
+        this.dispatchNavigate('login');
+      })
+      .catch(error => {
+        this.negativeFeedback(error.response.data.message);
+        this.showErrors(error.response.data.errors);
+      })
+  }
 }

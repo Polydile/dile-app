@@ -1,8 +1,10 @@
 import { LitElement, html, css } from 'lit';
 import { AuthMixin } from '../../lib/auth-mixin.js';
+import {DileFormMixin} from '@dile/dile-form-mixin';
 import '@dile/dile-input/dile-input';
 import '@dile/dile-button/dile-button';
-import {DileFormMixin} from '@dile/dile-form-mixin';
+import '@dile/dile-checkbox/dile-checkbox';
+import '../user/dile-remember-password';
 
 export class DilePageLogin extends DileFormMixin(AuthMixin(LitElement)) {
     static styles = [
@@ -10,6 +12,13 @@ export class DilePageLogin extends DileFormMixin(AuthMixin(LitElement)) {
             :host {
                 display: block;
                 padding: 0 0.6rem;
+            }
+            .actions {
+                display: flex;
+                justify-content: space-between;
+            }
+            .actions p {
+                margin: 0;
             }
         `
     ];
@@ -52,8 +61,16 @@ export class DilePageLogin extends DileFormMixin(AuthMixin(LitElement)) {
                     <dile-input label="Clave" type="password" name="password" id="password" placeholder="Password" value="1234qwer"></dile-input>
                 </p>
                 <p>
-                    <dile-button @click=${this.loginHandler}>Login</dile-button>
+                    <dile-checkbox name="remember">Remember me</dile-checkbox>
                 </p>
+                <div class="actions">
+                    <p>
+                        <dile-button @click=${this.loginHandler}>Login</dile-button>
+                    </p>
+                    <p>
+                        <dile-remember-password></dile-remember-password>
+                    </p>
+                </div>
             </form>
         `;
     }

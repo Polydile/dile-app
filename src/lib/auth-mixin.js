@@ -25,6 +25,7 @@ export const AuthMixin = (Superclass) => class extends FeedbackMixin(Superclass)
       .then(() => {
         this.positiveFeedback('login success');
         this.dispachCheckAuth();
+        this.dispatchNavigate('home');
       })
       .catch(error => {
         if (error.response.status !== 422) throw error
@@ -40,6 +41,7 @@ export const AuthMixin = (Superclass) => class extends FeedbackMixin(Superclass)
       .then(() => {
         this.positiveFeedback('registrado!!');
         this.dispachCheckAuth();
+        this.dispatchNavigate('home');
       })
       .catch(error => {
         if (error.response.status !== 422) throw error

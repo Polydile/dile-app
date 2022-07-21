@@ -5,13 +5,14 @@ export class DilePageHome extends LitElement {
         css`
             :host {
                 display: block;
+                padding: 0.6rem;
             }
         `
     ];
 
     render() {
         return html`
-            <p>Soy la página Home</p>
+            <p>Welcome to the app</p>
         `;
     }
 }

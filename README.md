@@ -12,3 +12,8 @@ This app is inspired by the [Laravel Breeze](https://breezejs.com/) project.
 
 The diference is that Laravel Breeze uses NextJS as framework and Dile-app don't uses any framework, only Web Components.
 
+## Backend repository
+
+This repository contains the backend Laravel application that serves as an API for this project.
+
+<https://github.com/Polydile/laravel-backend-api-sanctum-y-fortify>

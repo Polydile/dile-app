@@ -27,12 +27,6 @@ export class DilePageLogin extends DileFormMixin(AuthMixin(LitElement)) {
         `
     ];
 
-    static get properties() {
-        return {
-            user: { type: Object }
-        };
-    }
-
     firstUpdated() {
         this.loginForm = this.shadowRoot.getElementById('loginForm');
     }

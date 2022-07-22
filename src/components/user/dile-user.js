@@ -1,7 +1,6 @@
 import { LitElement, html, css } from 'lit';
 import './dile-user-menu.js';
 import { AuthMixin } from '../../lib/auth-mixin.js';
-import '@dile/dile-button/dile-button';
 import '@dile/dile-icon/dile-icon';
 import { accountIcon } from '@dile/icons';
 import { userMenuButtonStyles } from './user-menu-button-styles.js';
@@ -14,11 +13,7 @@ export class DileUser extends AuthMixin(LitElement) {
         display: flex;
         align-items: center;
         --dile-menu-overlay-background-color: var(--primary-light-color);
-      }
-      dile-button {
-        margin: 0 0.25rem;
-      }
-      
+      }      
       dile-menu-overlay {
         display: flex;
         align-items: center;
@@ -46,7 +41,6 @@ export class DileUser extends AuthMixin(LitElement) {
   firstUpdated() {
     this.checkAuth();
   }
-  
   
 }
 customElements.define('dile-user', DileUser);

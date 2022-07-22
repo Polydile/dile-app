@@ -60,7 +60,15 @@ export class DilePageLogin extends DileFormMixin(AuthMixin(LitElement)) {
                         hideErrorOnInput
                     ></dile-input>
                 
-                    <dile-input label="Password" type="password" name="password" id="password" placeholder="Password" value="1234qwer"></dile-input>
+                    <dile-input 
+                        label="Password" 
+                        type="password" 
+                        name="password" 
+                        id="password" 
+                        placeholder="Password" 
+                        value="1234qwer"
+                        hideErrorOnInput
+                    ></dile-input>
                 
                     <dile-checkbox name="remember">Remember me</dile-checkbox>
             

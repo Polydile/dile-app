@@ -82,7 +82,7 @@ export const AuthMixin = (Superclass) => class extends FeedbackMixin(Superclass)
   }
 
   dispatchUserDetected() {
-    console.log('despachando user detected', this.user);
+    console.log('Dispatch user detected event with user:', this.user);
     this.dispatchEvent(new CustomEvent('user-detected', {
       detail: { user: this.user }
     }));

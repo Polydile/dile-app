@@ -26,6 +26,8 @@ To use Vite and start the local server:
 
 1. Clone the repository
 2. Run `npm install`
-3. Run `npm run dev`
+3. Copy .env_example file to .env
+4. Change the `VITE_BACKEND_URL` enviroment variable value, if needed, with the URL of your backend
+5. Run `npm run dev`
 
 To build the project run `npm run build`
